@@ -1,0 +1,4 @@
+domain,account,tier,signals
+example-one.test,Example One,1:1,hiring|funding
+example-two.test,Example Two,1:few,technology
+example-three.test,Example Three,pool,

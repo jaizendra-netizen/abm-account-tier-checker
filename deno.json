@@ -1,0 +1,1 @@
+{ "tasks": { "test": "deno test --allow-read", "check": "deno run --allow-read cli.ts templates/accounts.csv templates/contacts.csv" } }

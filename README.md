@@ -1,0 +1,27 @@
+# abm-account-tier-checker
+
+A CSV template and a checker for an account-based marketing target list. It enforces three ideas from the OneGTMLab ABM
+service: every account sits in a **tier** (1:1, 1:few or pool), accounts above the pool have **buying signals** tracked, and a
+1:1 account has a **buying committee** mapped (champion, economic buyer, technical evaluator, end user).
+Deno 1.40+ / 2.x, TypeScript, no dependencies.
+
+```bash
+deno task check            # runs the checker on templates/accounts.csv and templates/contacts.csv
+deno run --allow-read cli.ts my_accounts.csv my_contacts.csv
+```
+
+`accounts.csv` columns: `domain,account,tier,signals` (signals separated with `|`). `contacts.csv` columns: `domain,name,role`.
+The checker reports duplicate domains (www and scheme are stripped), missing or unknown tiers, missing signals on 1:1 and 1:few
+accounts and, for 1:1 accounts, committee roles that no contact covers. It exits with 1 when there is an error. The template
+uses reserved `.test` domains, not real companies.
+
+## Test
+
+```bash
+deno task test
+```
+
+## Source of the rules
+
+[Account-Based Marketing services at OneGTMLab](https://www.onegtmlab.dev/services/account-based-marketing): "Account list and
+tiers", "Signal tracking" and "Buying committee maps". MIT licensed.
