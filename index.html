@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>abm-account-tier-checker | OneGTMLab</title>
+<meta name="description" content="CSV template and checker for an account-based marketing list: tiers (1:1, 1:few, pool), tracked signals and buying committee roles per account. Deno TypeScript.">
+<style>body{font:16px/1.6 system-ui,sans-serif;max-width:46rem;margin:2rem auto;padding:0 1rem;color:#1b1f23}pre{background:#f6f8fa;padding:1rem;overflow:auto}code{background:#f6f8fa;padding:.1em .3em}table{border-collapse:collapse}td,th{border:1px solid #d0d7de;padding:.3rem .6rem}</style>
+</head><body>
+<main>
+<h1 dir="auto">abm-account-tier-checker</h1>
+<p dir="auto">A CSV template and a checker for an account-based marketing target list. It enforces three ideas from the OneGTMLab ABM<br>
+service: every account sits in a <strong>tier</strong> (1:1, 1:few or pool), accounts above the pool have <strong>buying signals</strong> tracked, and a<br>
+1:1 account has a <strong>buying committee</strong> mapped (champion, economic buyer, technical evaluator, end user).<br>
+Deno 1.40+ / 2.x, TypeScript, no dependencies.</p>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">deno task check            <span class="pl-c"><span class="pl-c">#</span> runs the checker on templates/accounts.csv and templates/contacts.csv</span>
+deno run --allow-read cli.ts my_accounts.csv my_contacts.csv</pre></div>
+<p dir="auto"><code class="notranslate">accounts.csv</code> columns: <code class="notranslate">domain,account,tier,signals</code> (signals separated with <code class="notranslate">|</code>). <code class="notranslate">contacts.csv</code> columns: <code class="notranslate">domain,name,role</code>.<br>
+The checker reports duplicate domains (www and scheme are stripped), missing or unknown tiers, missing signals on 1:1 and 1:few<br>
+accounts and, for 1:1 accounts, committee roles that no contact covers. It exits with 1 when there is an error. The template<br>
+uses reserved <code class="notranslate">.test</code> domains, not real companies.</p>
+<h2 dir="auto">Test</h2>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">deno task <span class="pl-c1">test</span></pre></div>
+<h2 dir="auto">Source of the rules</h2>
+<p dir="auto"><a href="https://www.onegtmlab.dev/services/account-based-marketing">Account-Based Marketing services at OneGTMLab</a>: "Account list and<br>
+tiers", "Signal tracking" and "Buying committee maps". MIT licensed.</p>
+</main>
+<footer><p>Source: <a href="https://github.com/jaizendra-netizen/abm-account-tier-checker">github.com/jaizendra-netizen/abm-account-tier-checker</a>. Maintained by <a href="https://www.onegtmlab.dev">OneGTMLab</a>.</p></footer>
+</body></html>

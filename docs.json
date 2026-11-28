@@ -1,0 +1,10 @@
+{
+  "name": "abm-account-tier-checker",
+  "description": "CSV template and checker for an account-based marketing list: tiers (1:1, 1:few, pool), tracked signals and buying committee roles per account. Deno TypeScript.",
+  "sidebar": [
+    {
+      "title": "Overview",
+      "href": "/"
+    }
+  ]
+}
